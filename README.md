@@ -31,7 +31,7 @@ A stunning, performance-optimized landing page with interactive elements, social
 
 ## 🚀 **Live Demo**
 
-**🌐 Production Site**: [neurowealth-landing.vercel.app](neurowealth-landing.vercel.app)  
+**🌐 Production Site**: [neurowealth-landing.vercel.app](https://neurowealth-landing.vercel.app/)  
 **📱 Mobile Optimized**: Responsive across all devices  
 **⚡ Performance**: 95+ Lighthouse Score  
 
