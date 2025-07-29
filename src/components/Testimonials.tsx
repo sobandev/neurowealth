@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Star, TrendingUp, Quote } from 'lucide-react'
 
 const Testimonials = () => {
@@ -88,129 +87,114 @@ const Testimonials = () => {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-b from-primary-dark to-primary relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-primary-dark to-primary relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent-green rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent-blue rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-accent-green rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-accent-blue rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+        {/* Section Header - Mobile optimized */}
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-4 sm:mb-6 px-2 sm:px-0">
             Trusted by{' '}
             <span className="bg-gradient-to-r from-accent-green to-accent-blue bg-clip-text text-transparent">
               Investment Professionals
             </span>
           </h2>
-          <p className="text-xl text-neutral-gray max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-gray max-w-3xl mx-auto px-4 sm:px-0">
             See how NeuroWealth has helped investors and wealth managers achieve 
             superior returns through AI-powered investment strategies.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Testimonial Carousel */}
+        {/* Testimonial Carousel - Mobile responsive */}
         <div className="relative max-w-4xl mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 }}
-              className="bg-primary/50 glass-effect rounded-2xl p-8 md:p-12"
-            >
-              {/* Quote Icon */}
-              <Quote className="w-12 h-12 text-accent-green mb-6 opacity-50" />
+          <div className="bg-primary/50 glass-effect rounded-lg sm:rounded-2xl p-6 sm:p-8 md:p-12 transition-all duration-500">
+            {/* Quote Icon */}
+            <Quote className="w-8 h-8 sm:w-12 sm:h-12 text-accent-green mb-4 sm:mb-6 opacity-50" />
 
-              {/* Testimonial Content */}
-              <div className="space-y-6">
-                {/* Quote */}
-                <blockquote className="text-xl md:text-2xl text-white leading-relaxed font-light">
-                  "{testimonials[currentIndex].quote}"
-                </blockquote>
+            {/* Testimonial Content */}
+            <div className="space-y-4 sm:space-y-6">
+              {/* Quote */}
+              <blockquote className="text-lg sm:text-xl md:text-2xl text-white leading-relaxed font-light">
+                "{testimonials[currentIndex].quote}"
+              </blockquote>
 
-                {/* Rating */}
-                <div className="flex items-center gap-1">
-                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-accent-green fill-current" />
-                  ))}
+              {/* Rating */}
+              <div className="flex items-center gap-1">
+                {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-accent-green fill-current" />
+                ))}
+              </div>
+
+              {/* Author Info - Mobile responsive layout */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <img
+                    src={testimonials[currentIndex].image}
+                    alt={testimonials[currentIndex].name}
+                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-accent-green/30"
+                  />
+                  <div>
+                    <h4 className="text-white font-semibold text-base sm:text-lg">
+                      {testimonials[currentIndex].name}
+                    </h4>
+                    <p className="text-neutral-gray text-sm sm:text-base">
+                      {testimonials[currentIndex].role}
+                    </p>
+                    <p className="text-accent-blue text-xs sm:text-sm">
+                      {testimonials[currentIndex].company}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Author Info */}
-                <div className="flex items-center justify-between flex-wrap gap-4">
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={testimonials[currentIndex].image}
-                      alt={testimonials[currentIndex].name}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-accent-green/30"
-                    />
-                    <div>
-                      <h4 className="text-white font-semibold text-lg">
-                        {testimonials[currentIndex].name}
-                      </h4>
-                      <p className="text-neutral-gray">
-                        {testimonials[currentIndex].role}
-                      </p>
-                      <p className="text-accent-blue text-sm">
-                        {testimonials[currentIndex].company}
-                      </p>
+                {/* Performance Stats - Mobile layout */}
+                <div className="flex items-center gap-4 sm:gap-6 w-full sm:w-auto justify-center sm:justify-end">
+                  <div className="text-center">
+                    <div className="flex items-center gap-1 text-accent-green justify-center">
+                      <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4" />
+                      <span className="font-bold text-lg sm:text-xl">
+                        {testimonials[currentIndex].roi}
+                      </span>
                     </div>
+                    <p className="text-neutral-gray text-xs sm:text-sm">Returns</p>
                   </div>
-
-                  {/* Performance Stats */}
-                  <div className="flex items-center gap-6">
-                    <div className="text-center">
-                      <div className="flex items-center gap-1 text-accent-green">
-                        <TrendingUp className="w-4 h-4" />
-                        <span className="font-bold text-xl">
-                          {testimonials[currentIndex].roi}
-                        </span>
-                      </div>
-                      <p className="text-neutral-gray text-sm">Returns</p>
+                  <div className="text-center">
+                    <div className="text-white font-bold text-lg sm:text-xl">
+                      {testimonials[currentIndex].timeframe}
                     </div>
-                    <div className="text-center">
-                      <div className="text-white font-bold text-xl">
-                        {testimonials[currentIndex].timeframe}
-                      </div>
-                      <p className="text-neutral-gray text-sm">Timeframe</p>
-                    </div>
+                    <p className="text-neutral-gray text-xs sm:text-sm">Timeframe</p>
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </div>
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Mobile optimized */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-primary-dark/80 glass-effect rounded-full flex items-center justify-center text-white hover:bg-primary-dark transition-all duration-300 hover:scale-110"
+            className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-primary-dark/80 glass-effect rounded-full flex items-center justify-center text-white hover:bg-primary-dark transition-all duration-300 hover:scale-110"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           <button
             onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-primary-dark/80 glass-effect rounded-full flex items-center justify-center text-white hover:bg-primary-dark transition-all duration-300 hover:scale-110"
+            className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-primary-dark/80 glass-effect rounded-full flex items-center justify-center text-white hover:bg-primary-dark transition-all duration-300 hover:scale-110"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2 mt-6 sm:mt-8">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex 
                   ? 'bg-accent-green scale-125' 
                   : 'bg-neutral-gray/30 hover:bg-neutral-gray/50'
@@ -219,27 +203,21 @@ const Testimonials = () => {
           ))}
         </div>
 
-        {/* Trust Indicators */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
-        >
+        {/* Trust Indicators - Mobile responsive */}
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center animate-fade-in">
           <div className="space-y-2">
-            <div className="text-3xl font-bold text-accent-green">10,000+</div>
-            <div className="text-neutral-gray">Active Investors</div>
+            <div className="text-2xl sm:text-3xl font-bold text-accent-green">10,000+</div>
+            <div className="text-neutral-gray text-sm sm:text-base">Active Investors</div>
           </div>
           <div className="space-y-2">
-            <div className="text-3xl font-bold text-accent-blue">$2.5B+</div>
-            <div className="text-neutral-gray">Assets Under Management</div>
+            <div className="text-2xl sm:text-3xl font-bold text-accent-blue">$2.5B+</div>
+            <div className="text-neutral-gray text-sm sm:text-base">Assets Under Management</div>
           </div>
           <div className="space-y-2">
-            <div className="text-3xl font-bold text-accent-green">4.9/5</div>
-            <div className="text-neutral-gray">Average Rating</div>
+            <div className="text-2xl sm:text-3xl font-bold text-accent-green">4.9/5</div>
+            <div className="text-neutral-gray text-sm sm:text-base">Average Rating</div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

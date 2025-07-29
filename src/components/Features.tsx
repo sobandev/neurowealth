@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 import { 
   Brain, 
   TrendingUp, 
@@ -54,30 +53,8 @@ const Features = () => {
     }
   ]
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  }
-
   return (
-    <section className="py-24 bg-primary-dark relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-primary-dark relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -90,131 +67,93 @@ const Features = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+        {/* Section Header - Mobile optimized */}
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-4 sm:mb-6 px-2 sm:px-0">
             Powerful Features for{' '}
             <span className="bg-gradient-to-r from-accent-green to-accent-blue bg-clip-text text-transparent">
               Smarter Investing
             </span>
           </h2>
-          <p className="text-xl text-neutral-gray max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-neutral-gray max-w-3xl mx-auto px-4 sm:px-0">
             Our comprehensive suite of AI-powered tools and features gives you the edge 
             you need to outperform traditional investment strategies.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Features Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        {/* Features Grid - Mobile responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={itemVariants}
-              whileHover={{ y: -10 }}
-              className="group relative"
+              className="group relative animate-slide-up hover:scale-105 transition-transform duration-300"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Feature Card */}
-              <div className="bg-primary/50 glass-effect rounded-xl p-8 h-full hover:bg-primary/70 transition-all duration-300 border border-transparent group-hover:border-accent-green/30">
+              <div className="bg-primary/50 glass-effect rounded-lg sm:rounded-xl p-6 sm:p-8 h-full hover:bg-primary/70 transition-all duration-300 border border-transparent group-hover:border-accent-green/30">
                 {/* Icon */}
-                <motion.div
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
-                  className="w-16 h-16 bg-accent-gradient rounded-xl flex items-center justify-center mb-6 group-hover:shadow-lg group-hover:shadow-accent-green/20"
-                >
-                  <feature.icon className="w-8 h-8 text-primary-dark" />
-                </motion.div>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-accent-gradient rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:shadow-lg group-hover:shadow-accent-green/20 transition-all duration-300">
+                  <feature.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-dark" />
+                </div>
 
                 {/* Content */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-accent-green transition-colors">
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-accent-green transition-colors">
                     {feature.title}
                   </h3>
                   
-                  <p className="text-neutral-gray leading-relaxed">
+                  <p className="text-neutral-gray leading-relaxed text-sm sm:text-base">
                     {feature.description}
                   </p>
 
                   {/* Benefits List */}
                   <ul className="space-y-2">
                     {feature.benefits.map((benefit, benefitIndex) => (
-                      <motion.li
+                      <li
                         key={benefitIndex}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 * benefitIndex }}
-                        className="flex items-center gap-2 text-sm text-neutral-gray"
+                        className="flex items-center gap-2 text-xs sm:text-sm text-neutral-gray"
                       >
-                        <CheckCircle className="w-4 h-4 text-accent-green flex-shrink-0" />
+                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-accent-green flex-shrink-0" />
                         <span>{benefit}</span>
-                      </motion.li>
+                      </li>
                     ))}
                   </ul>
                 </div>
 
                 {/* Hover Glow Effect */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-green/5 to-accent-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-gradient-to-r from-accent-green/5 to-accent-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Bottom Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
+        {/* Bottom Stats Section - Mobile responsive */}
+        <div className="mt-16 sm:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 animate-fade-in">
           {[
             { icon: Globe, stat: "50+", label: "Global Markets Analyzed" },
             { icon: Zap, stat: "99.9%", label: "Platform Uptime" },
             { icon: TrendingUp, stat: "15.2%", label: "Average Annual Returns" }
           ].map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              whileHover={{ scale: 1.05 }}
-              className="text-center bg-primary/30 glass-effect rounded-xl p-6"
+              className="text-center bg-primary/30 glass-effect rounded-lg sm:rounded-xl p-4 sm:p-6 hover:scale-105 transition-transform duration-300"
             >
-              <item.icon className="w-12 h-12 text-accent-blue mx-auto mb-4" />
-              <div className="text-3xl font-bold text-white mb-2">{item.stat}</div>
-              <div className="text-neutral-gray">{item.label}</div>
-            </motion.div>
+              <item.icon className="w-10 h-10 sm:w-12 sm:h-12 text-accent-blue mx-auto mb-3 sm:mb-4" />
+              <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">{item.stat}</div>
+              <div className="text-neutral-gray text-sm sm:text-base">{item.label}</div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="text-center mt-16"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-accent-green text-primary-dark px-8 py-4 rounded-lg font-semibold text-lg hover:bg-accent-green/90 transition-all duration-300 glow-effect"
-          >
+        {/* CTA Section - Mobile optimized */}
+        <div className="text-center mt-12 sm:mt-16 animate-fade-in">
+          <button className="bg-accent-green text-primary-dark px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-accent-green/90 transition-all duration-300 glow-effect hover:scale-105 w-full sm:w-auto">
             Experience All Features Free
-          </motion.button>
-          <p className="text-neutral-gray mt-4">
+          </button>
+          <p className="text-neutral-gray mt-3 sm:mt-4 text-sm sm:text-base">
             No credit card required • 7-day free trial
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
