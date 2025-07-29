@@ -31,7 +31,7 @@ A stunning, performance-optimized landing page with interactive elements, social
 
 ## 🚀 **Live Demo**
 
-**🌐 Production Site**: [https://neurowealth.vercel.app](https://neurowealth.vercel.app)  
+**🌐 Production Site**: [neurowealth-landing.vercel.app](neurowealth-landing.vercel.app)  
 **📱 Mobile Optimized**: Responsive across all devices  
 **⚡ Performance**: 95+ Lighthouse Score  
 
@@ -311,13 +311,13 @@ const InvestmentSimulator: React.FC<InvestmentSimulatorProps> = ({
 **Interested in a similar project?**
 
 📧 **Email**: hello@sobandev.com  
-💼 **Portfolio**: [sobandev.com](https://sobandev.com)  
-💬 **LinkedIn**: [linkedin.com/in/sobandev](https://linkedin.com/in/sobandev)  
+💼 **Portfolio**: [sobandev.com](https://devsoban.vercel.com)  
+💬 **LinkedIn**: [linkedin.com/in/soban-usman](https://linkedin.com/in/soban-usman)  
 
 ### **Services Offered**
-- Landing Page Development ($3K - $8K)
-- Full Website Development ($5K - $15K)
-- E-commerce Solutions ($8K - $20K)
+- Landing Page Development ($500 - $3K)
+- Full Website Development ($1K - $5K)
+- E-commerce Solutions ($5K - $8K)
 - Custom Web Applications ($10K - $50K)
 
 ---
